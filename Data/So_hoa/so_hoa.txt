@@ -1,0 +1,18 @@
+Ứng dụng Zoom gửi dữ liệu người dùng cho Facebook.
+Ứng dụng Zoom Cloud Meetings trên iOS gửi thông tin về kiểu máy, múi giờ, tỉnh/thành phố, nhà mạng... tới Facebook mà người dùng không hay biết.
+
+Phiên bản Zoom trên iOS thực hiện việc gửi dữ liệu ngay cả khi người dùng không sử dụng Facebook. "Với dữ liệu này, các nhà quảng cáo hoàn toàn có thể nhận biết được thông tin về người dùng và quảng cáo cá nhân hoá", trang Vice dẫn lời nhà nghiên cứu về quyền riêng tư Pat Walshe.
+
+Theo Walshe, hành vi này "gây sốc" bởi trong các điều khoản sử dụng của mình, Zoom không đề cập tới việc gửi dữ liệu trên cho Facebook mà chỉ nói "có thể sẽ thu thập thông tin hồ sơ Facebook của người dùng" để phục vụ cho việc đăng nhập.
+
+Ngoài ra ứng dụng này cũng nhắc tới việc "một số đối tác quảng cáo như Google và Google Analytics sẽ tự động thu thập thông tin người dùng", nhưng không nhắc đến việc sẽ chuyển dữ liệu cho Facebook. Theo một số nhà nghiên cứu, sự việc được đánh giá nghiêm trọng bởi chúng liên quan đến Facebook - từng dính nhiều bê bối liên quan tới quyền riêng tư của người dùng.
+
+Hành động của Zoom cũng vi phạm chính sách đối tác của Facebook. Theo trang Motherboard, Facebook có điều khoản yêu cầu các nhà phát triển nếu sử dụng SDK (bộ công cụ phát triển phần mềm) của Facebook đều phải thông báo cho người dùng một cách rõ ràng và làm nổi bật thông báo đó để người dùng có thể nắm được. Tuy nhiên Zoom không thực hiện điều này.
+
+Zoom xác nhận việc ứng dụng gửi dữ liệu đến Facebook, nhưng cho rằng đây là điều nằm ngoài ý muốn. 
+
+"Chúng tôi sử dụng SDK từ Facebook để triển khai tính năng 'Đăng nhập bằng Facebook', giúp người dùng đăng nhập thuận tiện hơn. Nhưng mới đây, chúng tôi thấy SDK này thu thập nhiều dữ liệu không cần thiết", Zoom giải thích. Công ty này cũng xin lỗi, đồng thời cho biết sẽ xóa SDK của Facebook và điều chỉnh lại tính năng đăng nhập để bảo vệ dữ liệu người dùng.
+
+Trước đó, Zoom cũng bị đặt ra nhiều nghi vấn đề mức độ bảo mật và quyền riêng tư đối với người sử dụng. Theo Tổ chức bảo vệ người dùng số EFF, Zoom có khả năng truy cập vào nhiều thông tin mang tính bí mật, chẳng hạn thông tin các cuộc họp như thời gian họp, địa chỉ của người tham gia, thiết bị được sử dụng... Thậm chí, Zoom có thể nhận biết khi nào người dùng không tập trung vào camera, hay tham gia vào cuộc họp của các tổ chức mà không cần đưa ra thông báo. 
+
+Zoom đang là nền tảng "phòng họp ảo" được ưa chuộng ở Việt Nam và trên thế giới. Tại Việt Nam, Zoom Cloud Meetings hiện là ứng dụng được tải về nhiều nhất trên cả iOS và Android, được nhiều công ty, trường học sử dụng để phục vụ việc họp và học từ xa nhằm đối phó với Covid-19. Ứng dụng này từng bị nhiều học sinh Việt Nam đánh giá một sao chỉ vì không muốn học tại nhà.
