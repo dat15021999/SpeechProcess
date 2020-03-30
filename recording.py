@@ -6,7 +6,7 @@ from os import walk
 from nltk.tokenize import sent_tokenize
 
 
-class App:
+class Frame:
     chunk = 1024
     sample_format = pyaudio.paInt16
     channels = 2
@@ -18,54 +18,70 @@ class App:
         self.sentences = []
         self.current_index = -1
         self.is_recording = False
-        self.button1 = tk.Button(main, text='record', command=self.start, width=10)
-        self.button2 = tk.Button(main, text='stop', command=self.stop, width=10)
-        self.text = tk.Text(main, height=10, width=200)
-        self.lable = tk.Label(main, text='Sentences')
 
-        self.emo = tk.StringVar(main)
-        self.emo.set('choose topic')
-        self.popupMenu = tk.OptionMenu(main, self.emo, *topics)
-        self.emo.trace('w', self.getTopic)
+        self.record_button = tk.Button(main, text='record', command=self.start, width=10)
+        self.record_button.pack()
 
-        self.sentence = 'article here'
+        self.stop_button = tk.Button(main, text='stop', command=self.stop, width=10)
+        self.stop_button.pack() 
 
         self.next_button = tk.Button(main, text='next', command=self.goNext, width=10)
-
-        self.popupMenu.pack()
-        self.lable.pack()
-        self.text.pack()
         self.next_button.pack()
-        self.button1.pack()
-        self.button2.pack()
+        
+        self.prev_button = tk.Button(main, text='back', command=self.goPrev, width=10)
+        self.prev_button.pack()
+
+        self.lable = tk.Label(main, text='Sentences')
+        self.lable.pack()
+
+        self.text = tk.Text(main, height=10, width=250)
+        self.text.pack()
+
+
+        #Topic Option
+        self.emo = tk.StringVar(main)
+        self.emo.set('Topics')
+        self.popupMenu = tk.OptionMenu(main, self.emo, *topics)
+        self.emo.trace('w', self.getTopic)
+        self.popupMenu.pack()
+
+        
 
     def getTopic(self, *args):
         topic_name = self.emo.get()
         file_name = topic_name.lower() + '.txt'
-        with open('Data/' + topic_name + '/' + file_name, 'r') as f:
-            lines = f.readlines()
-            tieu_de = lines[0]
-            lines = lines[1:]
-            lines = ' '.join(lines)
-        content = sent_tokenize(lines)
-        with open('Data/' + topic_name + '/' + 'index.txt', 'w') as f:
-            f.write(tieu_de)
-            for i in range(len(content)):
+        dir = 'Data/' + topic_name + '/' + file_name
+        
+        with open(dir, 'r') as f:
+            text = f.read()
+            self.sentences = sent_tokenize(text)
+
+        dir = 'Data/' + topic_name + '/' + 'index.txt'
+
+        with open(dir, 'w') as f:
+            for i in range(len(self.sentences)):
+                f.write(self.sentences[i] + '\n')
                 f.write(str(i) + '.wav\n')
-                f.write(content[i] + '\n')
-        self.sentences = content
         self.current_index = -1
 
     def goNext(self):
         self.current_index += 1
 
         if self.current_index >= len(self.sentences):
-            print('End of article')
-            print('Pick other topic')
+            print('End of article. Choose other topic')
 
         self.text.delete('1.0', tk.END)
-        content = self.sentences[self.current_index]
-        self.text.insert(tk.END, content)
+        self.text.insert(tk.END, self.sentences[self.current_index])
+        print(self.sentences[self.current_index])
+
+    def goPrev(self):
+        self.current_index -= 1
+
+        if self.current_index < 0:
+            self.current_index = 0
+
+        self.text.delete('1.0', tk.END)
+        self.text.insert(tk.END, self.sentences[self.current_index])
         print(self.sentences[self.current_index])
 
     def start(self):
@@ -105,7 +121,7 @@ for (dirpath, dirnames, filenames) in walk('Data'):
     break
 
 main = tk.Tk()
-main.title('recording')
-main.geometry('1000x500')
-app = App(main, topics)
+main.title('Recording')
+main.geometry('800x500')
+frame = Frame(main, topics)
 main.mainloop()
