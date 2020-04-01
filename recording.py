@@ -91,8 +91,8 @@ class Frame:
         self.is_recording = True
 
         print('Recording')
-        self.t = threading.Thread(target=self.record)
-        self.t.start()
+        threading.Thread(target=self.record).start()
+        
 
     def stop(self):
         self.is_recording = False
