@@ -60,8 +60,8 @@ class Frame:
 
         with open(dir, 'w') as f:
             for i in range(len(self.sentences)):
-                f.write(self.sentences[i] + '\n')
                 f.write(str(i) + '.wav\n')
+                f.write(self.sentences[i] + '\n')
         self.current_index = -1
 
     def goNext(self):
