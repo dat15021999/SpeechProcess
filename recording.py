@@ -51,14 +51,23 @@ class Frame:
         topic_name = self.emo.get()
         file_name = topic_name.lower() + '.txt'
         dir = 'Data/' + topic_name + '/' + file_name
-        
+
         with open(dir, 'r') as f:
             text = f.read()
             self.sentences = sent_tokenize(text)
 
+        with open("Data_source", 'r') as f:
+            text = f.read()
+            sentences = sent_tokenize(text)
+            for sentence in sentences:
+                if sentence.find(topic_name) != -1:
+                    i = sentence.find("https")
+                    link = sentence[i:-1]
+
         dir = 'Data/' + topic_name + '/' + 'index.txt'
 
         with open(dir, 'w') as f:
+            f.write(link + "\n")
             for i in range(len(self.sentences)):
                 f.write(str(i) + '.wav\n')
                 f.write(self.sentences[i] + '\n')
